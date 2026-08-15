@@ -1,3 +1,8 @@
+// puppeteer ships ESM-only transitive deps that ts-jest can't parse from
+// node_modules; this spec only needs the EMPTY_EXTRACTION constant, not the
+// real crawler, so stub the module rather than pull puppeteer into the test.
+jest.mock('puppeteer', () => ({}));
+
 import { EMPTY_DRAFT } from './brief-drafter.service';
 import { RawAnswers, UNKNOWN, buildFacts } from './brief-facts';
 import { renderBrief } from './brief-renderer';

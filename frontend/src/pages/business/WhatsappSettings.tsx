@@ -5,6 +5,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { whatsappApi, type WhatsappStatus } from "../../api/whatsapp";
 import { apiErrorMessage } from "../../api/client";
 import { Button, Card, FormError, Spinner } from "../../components/ui";
+import { Icon } from "../../components/icons";
 
 function statusBadge(
   status: WhatsappStatus | undefined,
@@ -177,7 +178,11 @@ export default function WhatsappSettings() {
               </summary>
               <ol className="list-decimal ms-5 mt-2 space-y-1">
                 <li>נכנסים ל־360dialog Hub של הלקוח.</li>
-                <li>בוחרים את המספר → API Key.</li>
+                <li>
+                  בוחרים את המספר{" "}
+                  <Icon name="arrow-end" size={11} className="inline align-[-1px]" />{" "}
+                  API Key.
+                </li>
                 <li>מייצרים מפתח (Generate) ומעתיקים — מדביקים כאן.</li>
               </ol>
             </details>

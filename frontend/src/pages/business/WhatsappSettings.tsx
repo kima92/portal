@@ -177,7 +177,7 @@ export default function WhatsappSettings() {
               </summary>
               <ol className="list-decimal ms-5 mt-2 space-y-1">
                 <li>נכנסים ל־360dialog Hub של הלקוח.</li>
-                <li>בוחרים את המספר → API Key.</li>
+                <li>בוחרים את המספר ואז API Key.</li>
                 <li>מייצרים מפתח (Generate) ומעתיקים — מדביקים כאן.</li>
               </ol>
             </details>

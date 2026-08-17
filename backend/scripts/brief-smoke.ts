@@ -132,7 +132,7 @@ async function main() {
   const t0 = Date.now();
   const extraction = site
     ? await extractor.extract(site)
-    : (await import('../src/briefs/website-extractor.service')).EMPTY_EXTRACTION;
+    : (await import('../src/briefs/web-extraction')).EMPTY_EXTRACTION;
   console.log(`extraction: pages=${extraction.pages.length} (${Date.now() - t0}ms)`);
 
   const t1 = Date.now();

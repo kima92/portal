@@ -11,6 +11,7 @@ import { agentsApi } from "../../api/agents";
 import { useAuthStore } from "../../store/auth";
 import { isPlatformStaff } from "../../lib/roles";
 import { Button, Card, Input, Spinner, Textarea } from "../../components/ui";
+import { Icon } from "../../components/icons";
 
 const RUN_AGENT_KEYS = [
   "marketing",
@@ -94,7 +95,7 @@ export default function Automations() {
       {!rules.isLoading && items.length === 0 && !showForm && (
         <Card className="p-12 text-center text-navy-400">
           {isOperator
-            ? 'אין אוטומציות עדיין. צור כלל ראשון, למשל "ליד חדש ← צור משימת מעקב".'
+            ? 'אין אוטומציות עדיין. צור כלל ראשון, למשל "כשנכנס ליד חדש — צור משימת מעקב".'
             : "עדיין לא הוגדרו לך אוטומציות. נגדיר עבורך כללים שתוכל להפעיל בלחיצה."}
         </Card>
       )}
@@ -124,7 +125,11 @@ export default function Automations() {
                   כש<span className="font-medium">
                     {TRIGGER_LABEL[rule.trigger] ?? rule.trigger}
                   </span>{" "}
-                  ←{" "}
+                  <Icon
+                    name="arrow-end"
+                    size={13}
+                    className="inline-block align-[-1px]"
+                  />{" "}
                   {rule.actions
                     .map((a) => ACTION_LABEL[a.type] ?? a.type)
                     .join(", ")}

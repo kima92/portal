@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -82,15 +82,20 @@ export default function ContactDetail() {
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const [confirmErase, setConfirmErase] = useState(false);
+  const [seededId, setSeededId] = useState<string | null>(null);
 
-  // Seed the editable fields once the card loads.
-  useEffect(() => {
-    if (card.data) {
-      setName(card.data.contact.displayName ?? "");
-      setNotes(card.data.contact.notes ?? "");
-      setSt(card.data.contact.status);
-    }
-  }, [card.data]);
+  // Seed the editable fields from the loaded card — during render, not in an
+  // effect (React's "adjusting state when a prop changes" pattern), so there is
+  // no cascading re-render. Gated on the contact's identity on purpose: a
+  // background refetch of the *same* contact must not clobber edits in
+  // progress, only switching to another contact re-seeds the form.
+  const loaded = card.data?.contact ?? null;
+  if (loaded && loaded.id !== seededId) {
+    setSeededId(loaded.id);
+    setName(loaded.displayName ?? "");
+    setNotes(loaded.notes ?? "");
+    setSt(loaded.status);
+  }
 
   const save = useMutation({
     mutationFn: () =>

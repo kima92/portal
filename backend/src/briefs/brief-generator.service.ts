@@ -12,10 +12,8 @@ import { buildFacts } from './brief-facts';
 import { renderBrief } from './brief-renderer';
 import { ClaudeJsonService } from './claude-json.service';
 import { detectContradictions } from './contradictions';
-import {
-  EMPTY_EXTRACTION,
-  WebsiteExtractorService,
-} from './website-extractor.service';
+import { EMPTY_EXTRACTION } from './web-extraction';
+import { WebsiteExtractorService } from './website-extractor.service';
 
 export interface GenerateBriefInput {
   businessId: string;

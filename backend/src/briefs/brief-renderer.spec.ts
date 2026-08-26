@@ -2,7 +2,7 @@ import { EMPTY_DRAFT } from './brief-drafter.service';
 import { RawAnswers, UNKNOWN, buildFacts } from './brief-facts';
 import { renderBrief } from './brief-renderer';
 import { detectContradictions } from './contradictions';
-import { EMPTY_EXTRACTION } from './website-extractor.service';
+import { EMPTY_EXTRACTION } from './website-extraction.types';
 
 const answers: RawAnswers = {
   businessName: 'סטודיו נועה',

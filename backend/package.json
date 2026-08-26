@@ -49,8 +49,8 @@
     "handlebars": "^4.7.9",
     "ioredis": "^5.4.1",
     "mime-types": "^2.1.35",
-    "multer": "^2.1.1",
-    "nanoid": "^5.0.9",
+    "multer": "^2.2.0",
+    "nanoid": "^5.1.16",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.21.0",
@@ -94,6 +94,18 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "ws": ">=8.21.0",
+      "socket.io-parser": ">=4.2.7",
+      "multer": ">=2.2.0",
+      "hono": ">=4.12.34",
+      "body-parser": ">=2.3.0",
+      "fast-uri": ">=3.1.5",
+      "ip-address": ">=10.3.1",
+      "@hono/node-server": ">=1.19.15"
+    }
   },
   "jest": {
     "moduleFileExtensions": [

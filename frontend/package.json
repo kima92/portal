@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.0",
-    "axios": "^1.7.9",
+    "axios": "^1.18.1",
     "i18next": "^24.2.0",
     "i18next-browser-languagedetector": "^8.0.2",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-i18next": "^15.4.0",
-    "react-router-dom": "^7.1.1",
+    "react-router-dom": "^7.18.1",
     "socket.io-client": "^4.8.1",
     "zustand": "^5.0.2"
   },
@@ -37,5 +37,11 @@
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
     "vite": "^8.0.12"
+  },
+  "pnpm": {
+    "overrides": {
+      "ws": ">=8.21.0",
+      "socket.io-parser": ">=4.2.7"
+    }
   }
 }

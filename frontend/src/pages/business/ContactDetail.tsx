@@ -83,7 +83,9 @@ export default function ContactDetail() {
   const [saved, setSaved] = useState(false);
   const [confirmErase, setConfirmErase] = useState(false);
 
-  // Seed the editable fields once the card loads.
+  // Seed the editable fields once the card loads (draft form state from an
+  // async query load, not a render-time derivation).
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (card.data) {
       setName(card.data.contact.displayName ?? "");
@@ -91,6 +93,7 @@ export default function ContactDetail() {
       setSt(card.data.contact.status);
     }
   }, [card.data]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const save = useMutation({
     mutationFn: () =>

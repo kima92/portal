@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -83,14 +83,15 @@ export default function ContactDetail() {
   const [saved, setSaved] = useState(false);
   const [confirmErase, setConfirmErase] = useState(false);
 
-  // Seed the editable fields once the card loads.
-  useEffect(() => {
-    if (card.data) {
-      setName(card.data.contact.displayName ?? "");
-      setNotes(card.data.contact.notes ?? "");
-      setSt(card.data.contact.status);
-    }
-  }, [card.data]);
+  // Seed the editable fields once the card loads, without an effect
+  // (https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes).
+  const [seededCard, setSeededCard] = useState(card.data);
+  if (card.data && card.data !== seededCard) {
+    setSeededCard(card.data);
+    setName(card.data.contact.displayName ?? "");
+    setNotes(card.data.contact.notes ?? "");
+    setSt(card.data.contact.status);
+  }
 
   const save = useMutation({
     mutationFn: () =>

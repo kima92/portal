@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -83,14 +83,18 @@ export default function ContactDetail() {
   const [saved, setSaved] = useState(false);
   const [confirmErase, setConfirmErase] = useState(false);
 
-  // Seed the editable fields once the card loads.
-  useEffect(() => {
+  // Seed the editable fields once the card loads. Updating state during
+  // render (rather than in an effect) avoids an extra commit — see
+  // https://react.dev/reference/react/useState#storing-information-from-previous-renders
+  const [seededData, setSeededData] = useState(card.data);
+  if (card.data !== seededData) {
+    setSeededData(card.data);
     if (card.data) {
       setName(card.data.contact.displayName ?? "");
       setNotes(card.data.contact.notes ?? "");
       setSt(card.data.contact.status);
     }
-  }, [card.data]);
+  }
 
   const save = useMutation({
     mutationFn: () =>

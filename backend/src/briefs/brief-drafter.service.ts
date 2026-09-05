@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ClaudeJsonService } from './claude-json.service';
 import { BriefFacts, UNKNOWN, renderFactsForPrompt } from './brief-facts';
 import { Contradiction } from './contradictions';
-import { WebExtraction } from './website-extractor.service';
+import { WebExtraction } from './website-extraction.types';
 
 export interface DraftPersona {
   name: string;

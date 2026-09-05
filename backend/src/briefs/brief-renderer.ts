@@ -11,7 +11,7 @@
 import { BriefFacts, UNKNOWN, answer, isRelevant } from './brief-facts';
 import { BriefDraft } from './brief-drafter.service';
 import { Contradiction } from './contradictions';
-import { WebExtraction } from './website-extractor.service';
+import { WebExtraction } from './website-extraction.types';
 import { Q_FIELD_BY_ID } from './questionnaire-schema';
 
 const DRAFT_TAG = '🟠 טיוטה — טעון אישור';
